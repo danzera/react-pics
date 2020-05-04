@@ -14,11 +14,17 @@ class SearchBar extends React.Component {
 		this.setState({ searchTerm: e.target.value });
 	}
 
+	onFormSubmit = (e) => {
+		e.preventDefault();
+		// props in class based components are referenced via "this.props"
+		this.props.onSubmit(this.state.searchTerm);
+	}
+
 	// onChange callback function automatically invoked any time the input is updated
 	render() {
 		return (
 			<div className="search-bar ui segment">
-				<form className="ui form">
+				<form className="ui form" onSubmit={this.onFormSubmit}>
 					<div className="field">
 						<label>Image Search</label>
 						<input type="text"
