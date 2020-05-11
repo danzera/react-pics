@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import '../css/app.css';
 
@@ -13,17 +13,10 @@ class App extends React.Component {
 	// marking this function with "async" allows us to use the async-await syntax
 	// prevents us from having to chain a ".then" on the end of the request
 	onSearchSubmit = async searchTerm => {
-		const response = await axios.get('https://api.unsplash.com/search/photos', {
-			params: {
-				query: searchTerm
-			},
-			// auth header
-			headers: {
-				Authorization: 'Client-ID '
-			}
+		const response = await unsplash.get('https://api.unsplash.com/search/photos', {
+			params: { query: searchTerm }
 		});
 
-		console.log('this', this);
 		this.setState({ images: response.data.results });
 	}
 
