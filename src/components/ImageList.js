@@ -1,9 +1,10 @@
 import React from 'react';
+import ImageCard from './ImageCard';
+import '../css/ImageList.css';
 
 const ImageList = props => {
-	// use destructuring to pull properties off of the image object
-	const images = props.images.map(({description, id, urls}) => {
-		return <img alt={description} key={id} src={urls.regular} />
+	const images = props.images.map(image => {
+		return <ImageCard key={image.id} image={image} />
 	});
 
 	return (
