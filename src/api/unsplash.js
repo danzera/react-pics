@@ -4,6 +4,6 @@ import axios from 'axios';
 export default axios.create({
 	baseUrl: 'https://api.unsplash.com/search/photos',
 	headers: {
-		Authorization: 'Client-ID '
+		Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`
 	}
 });
